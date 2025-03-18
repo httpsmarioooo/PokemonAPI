@@ -24,6 +24,7 @@ def obtenerDatosPokemon(pokemonName):
         tipos = [tipo["type"]["name"].capitalize() for tipo in data["types"]]
         habilidades = [habili["ability"]["name"].capitalize() for habili in data["abilities"]] 
         
+        #! Diccionario
         return {"nombre": nombrePokemon, "hp": hp, "ataque": ataque, "defensa": defensa, "tipos": tipos, "habilidades": habilidades}
     else:
         return 
