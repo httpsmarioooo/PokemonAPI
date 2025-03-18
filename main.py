@@ -12,14 +12,14 @@ def obtenerDatosPokemon(nombre):
 
     if response.status_code == 200:
         data = response.json()
-        nombre_pokemon = data['name'].capitalize()
+        nombrePokemon = data['name'].capitalize()
         hp = next(stat['base_stat'] for stat in data['stats'] if stat['stat']['name'] == "hp")
         ataque = next(stat['base_stat'] for stat in data['stats'] if stat['stat']['name'] == "attack")
         defensa = next(stat['base_stat'] for stat in data['stats'] if stat['stat']['name'] == "defense")
         tipos = [tipo["type"]["name"].capitalize() for tipo in data["types"]]
         habilidades = [habili["ability"]["name"].capitalize() for habili in data["abilities"]] 
         
-        return {"nombre": nombre_pokemon, "hp": hp, "ataque": ataque, "defensa": defensa, "tipos": tipos, "habilidades": habilidades}
+        return {"nombre": nombrePokemon, "hp": hp, "ataque": ataque, "defensa": defensa, "tipos": tipos, "habilidades": habilidades}
     else:
         return 
 
@@ -44,18 +44,18 @@ def main():
 
         elif opcion == "2":
             print("\n🔥 ¡Batalla Pokémon! 🔥")
-            pokemon_a = input("Ingrese el nombre del primer Pokémon: ").strip().lower()
-            datos_a = obtenerDatosPokemon(pokemon_a)
-            pokemon_b = input("Ingrese el nombre del segundo Pokémon: ").strip().lower()
-            datos_b = obtenerDatosPokemon(pokemon_b)
+            pokemonA = input("Ingrese el nombre del primer Pokémon: ").strip().lower()
+            datosPokemonA = obtenerDatosPokemon(pokemonA)
+            pokemonB = input("Ingrese el nombre del segundo Pokémon: ").strip().lower()
+            datosPokemonB = obtenerDatosPokemon(pokemonB)
 
-            print(f"\n⚔️ {datos_a['nombre']} VS {datos_b['nombre']} ⚔️")
-            print(f"{datos_a['nombre']} (Ataque: {datos_a['ataque']}) vs {datos_b['nombre']} (Ataque: {datos_b['ataque']})")
+            print(f"\n⚔️ {datosPokemonA['nombre']} VS {datosPokemonB['nombre']} ⚔️")
+            print(f"{datosPokemonA['nombre']} (Ataque: {datosPokemonA['ataque']}) vs {datosPokemonB['nombre']} (Ataque: {datosPokemonB['ataque']})")
 
-            if datos_a['ataque'] > datos_b['ataque']:
-                print(f"🏆 {datos_a['nombre']} gana la batalla!")
-            elif datos_b['ataque'] > datos_a['ataque']:
-                print(f"🏆 {datos_b['nombre']} gana la batalla!")
+            if datosPokemonA['ataque'] > datosPokemonB['ataque']:
+                print(f"🏆 {datosPokemonA['nombre']} gana la batalla!")
+            elif datosPokemonB['ataque'] > datosPokemonA['ataque']:
+                print(f"🏆 {datosPokemonB['nombre']} gana la batalla!")
             else:
                 print("⚔️ ¡Es un Pokeempate!")
 
