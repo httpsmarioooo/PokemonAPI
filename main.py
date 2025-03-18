@@ -6,8 +6,8 @@ def mostrarMenu():
     print("2. Batalla Pokémon")
     print("3. Salir de la PokeAventura")
 
-def obtenerDatosPokemon(nombre):
-    url = f"https://pokeapi.co/api/v2/pokemon/{nombre.lower()}"
+def obtenerDatosPokemon(pokemonName):
+    url = f"https://pokeapi.co/api/v2/pokemon/{pokemonName.lower()}"
     response = requests.get(url)
 
     if response.status_code == 200:
