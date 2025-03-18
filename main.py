@@ -6,7 +6,7 @@ def mostrarMenu():
     print("2. Batalla Pokémon")
     print("3. Salir de la PokeAventura")
 
-def obtener_datos_pokemon(nombre):
+def obtenerDatosPokemon(nombre):
     url = f"https://pokeapi.co/api/v2/pokemon/{nombre.lower()}"
     response = requests.get(url)
 
@@ -30,7 +30,7 @@ def main():
 
         if opcion == "1":
             pokemonName = input("Ingrese el nombre del Pokémon: ").strip().lower()
-            datos = obtener_datos_pokemon(pokemonName)
+            datos = obtenerDatosPokemon(pokemonName)
 
             if datos:
                 print(f"\n🔍 Información de {datos['nombre']}:")
@@ -45,9 +45,9 @@ def main():
         elif opcion == "2":
             print("\n🔥 ¡Batalla Pokémon! 🔥")
             pokemon_a = input("Ingrese el nombre del primer Pokémon: ").strip().lower()
-            datos_a = obtener_datos_pokemon(pokemon_a)
+            datos_a = obtenerDatosPokemon(pokemon_a)
             pokemon_b = input("Ingrese el nombre del segundo Pokémon: ").strip().lower()
-            datos_b = obtener_datos_pokemon(pokemon_b)
+            datos_b = obtenerDatosPokemon(pokemon_b)
 
             print(f"\n⚔️ {datos_a['nombre']} VS {datos_b['nombre']} ⚔️")
             print(f"{datos_a['nombre']} (Ataque: {datos_a['ataque']}) vs {datos_b['nombre']} (Ataque: {datos_b['ataque']})")
