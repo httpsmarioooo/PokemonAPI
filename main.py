@@ -13,7 +13,12 @@ def obtenerDatosPokemon(nombre):
     if response.status_code == 200:
         data = response.json()
         nombrePokemon = data['name'].capitalize()
+
         hp = next(stat['base_stat'] for stat in data['stats'] if stat['stat']['name'] == "hp")
+        #! stats se llama el grupo
+        #! base stat = es el valor en este caso pika tiene un ataque de 55
+        #! stat es el subgrupo en donde esta:
+            #! name es el nombre, en este ejemplo attack
         ataque = next(stat['base_stat'] for stat in data['stats'] if stat['stat']['name'] == "attack")
         defensa = next(stat['base_stat'] for stat in data['stats'] if stat['stat']['name'] == "defense")
         tipos = [tipo["type"]["name"].capitalize() for tipo in data["types"]]
